@@ -43,7 +43,7 @@ def largest_contiguous_subsum(list)
 
   (0...list.length).each do |i|
     (i...list.length).each do |j|
-      subarrs << list[i..j]
+      subarrs << list[i..j] # n^3
     end
   end
 
@@ -51,18 +51,14 @@ def largest_contiguous_subsum(list)
 end
 
 def largest_contiguous_subsum_optimized(list)
-  larest_sum = 0
-  curr_sum = 0
+  larest_sum = 0 # 5
+  curr_sum = 0 # -1
 
-  list.each do |ele|
+  list.each do |ele| # [2, 3, -6, 7, -6, 7]
     curr_sum += ele
     largest_sum = curr_sum if largest_sum < curr_sum
+    curr_sum = 0 if curr_sum <= 0
   end
-
-  list.reverse.each do |el|
-    curr_sum += el
-    largest_sum = curr_sum if largest_sum < curr_sum
-  end 
 
   largest_sum 
 end
