@@ -54,12 +54,17 @@ def largest_contiguous_subsum_optimized(list)
   larest_sum = 0
   curr_sum = 0
 
-  i = 0
-  while i < list.length
-    
-    i += 1
+  list.each do |ele|
+    curr_sum += ele
+    largest_sum = curr_sum if largest_sum < curr_sum
   end
 
+  list.reverse.each do |el|
+    curr_sum += el
+    largest_sum = curr_sum if largest_sum < curr_sum
+  end 
+
+  largest_sum 
 end
 
 list = [5, 3, -7]
